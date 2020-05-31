@@ -17,6 +17,6 @@ A Beautifully designed Online Bookstore which contains multiple Books, the site 
 Also, before purchasing any book you will be redirected to the login or signup page. So that new users can signup on the site and then can buy their favourite book. The site also informs users which book is available and which one is out of stock !.
 
 
-* checkout the site here: https://https://ym-djecom.herokuapp.com/
+* checkout the site here: https://ym-djecom.herokuapp.com
 
 ## Books app
