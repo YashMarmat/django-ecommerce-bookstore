@@ -29,6 +29,7 @@ This is an h1 heading
 
 # Table of contents
 - [About this app](#About this app)
+- [About this app](#About this app)
 - [Books app](# Books app)
 
 ## About this App
