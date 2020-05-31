@@ -1,0 +1,131 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+	<meta id="meta" name="viewport"
+		content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+	<style type="text/css">
+		body {
+			background-color: #f0f0f0;
+
+		}
+	</style>
+</head>
+
+
+<body>
+	<div class="container">
+		{% if object.book_available is True %}
+		<div class="row">
+			<div class="col-lg">
+				<br><div class="text-center" style="width: 22rem;">
+					<img src="{{ object.image_url }}" class="card-img">
+				  </div>
+			</div>
+			<div class="col-lg">
+				<br>
+				<div class="card card-body">
+					<h3>{{object.title}}</h3>
+					<hr>
+					<h4>Total: ${{object.price|floatformat:2}}</h4>
+					<hr>
+
+					<div id="paypal-button-container"></div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+	<!--Paypal payments-->
+
+	<div id="paypal-button-container"></div>
+
+	<script
+		src="https://www.paypal.com/sdk/js?client-id=AaDbFCTAdi8NU4o-x6oOaBiLLoybkvO8w3xVZ2LgPAiTRwT4dDJu5u_ZecP9OtLTDvr7GZtZk_HuM3kq&currency=USD"></script>
+
+	<script>
+
+		function getCookie(name) {
+			var cookieValue = null;
+			if (document.cookie && document.cookie !== '') {
+				var cookies = document.cookie.split(';');
+				for (var i = 0; i < cookies.length; i++) {
+					var cookie = cookies[i].trim();
+					// Does this cookie string begin with the name we want?
+					if (cookie.substring(0, name.length + 1) === (name + '=')) {
+						cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+						break;
+					}
+				}
+			}
+			return cookieValue;
+		}
+		var csrftoken = getCookie('csrftoken');
+
+		var total = '{{object.price}}'
+		var productId = '{{object.id}}'
+
+		function completeOrder() {
+			var url = "{% url 'complete' %}"
+
+			fetch(url, {
+				method: 'POST',
+				headers: {
+					'content-type': 'application/json',
+					'X-CSRFToken': csrftoken,
+				},
+				body: JSON.stringify({ 'productId': productId })
+			})
+		}		
+
+
+
+		// Render the PayPal button into #paypal-button-container
+		paypal.Buttons({
+
+			// Set up the transaction
+			createOrder: function (data, actions) {
+				return actions.order.create({
+					purchase_units: [{
+						amount: {
+							value: total
+						}
+					}]
+				});
+			},
+
+			// Finalize the transaction
+			onApprove: function (data, actions) {
+				return actions.order.capture().then(function (details) {
+					// Show a success message to the buyer
+					completeOrder()
+					alert('Transaction completed by ' + details.payer.name.given_name + '!');
+				});
+			}
+
+
+		}).render('#paypal-button-container');
+	</script>
+	{% else %}
+	</div>
+	<div class="mx-auto" style="width: 340px;">
+	<h4 class="text-danger">Sorry, this book is out of Stock !</h4>
+	{% endif %}
+</body>
+
+</html>
+
+{% endblock content %}

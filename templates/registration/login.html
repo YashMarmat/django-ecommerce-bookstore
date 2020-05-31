@@ -1,0 +1,18 @@
+
+{% extends "base.html" %}
+
+{% block title %}Log In{% endblock title %}
+
+{% block content %}
+
+<h3>Log In</h3>
+
+<form method = "post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type = "submit" class = 'btn btn-success'>Log In</button>
+    <a class = "btn btn-outline-info" href = "{% url 'signup' %}" role = "button">Create Account</a>    
+</form>
+
+
+{% endblock content %}

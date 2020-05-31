@@ -1,0 +1,35 @@
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<br>
+<div class="card mb-3" style="max-width: 840px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="{{ object.image_url }}" class="card-img">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h4 class="card-title">{{ object.title }}</h4>
+          <p class="card-text">Author: {{ object.author }}</p><hr>
+          <p class="card-text">{{ object.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- <p>Follow Author: </p> -->
+<p><a href="{{ object.follow_author }}">Follow Author</a> </p>
+<p>Price: $ {{ object.price|floatformat:2 }}</p>
+
+
+{% if object.book_available is True %}
+<a href="{% url 'checkout' object.pk %}" class="btn btn-outline-success" role="button">Buy Now</a>
+{% else %}
+<h4 class="text-danger">Out of Stock !</h4>
+{% endif %}
+
+{% endblock content %}
+
