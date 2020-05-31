@@ -36,8 +36,8 @@ yash@yash-SVE15113ENB:~/Documents/django_project/$
 
 Lets begin our project by starting our project and installing a books app, type below commands in terminal.
 
-django-admin startproject ecom_project . (do not avoid this period)
-python manage.py startapp books
+`django-admin startproject ecom_project .` (do not avoid this period)
+`python manage.py startapp books`
 
 Now, open your favourite IDE and locate this project directory. (Im using VS Code so it should be something like this)
 
@@ -54,7 +54,7 @@ Go to Installed app section and mention your app name there (as shown below)
 when done with the settings.py file, open the books folder (our app), in here you we find models.py file (open it)
 Now put the following code in it,
 
-
+`
 from django.db import models
 from django.urls import reverse
 
@@ -77,7 +77,7 @@ class Order(models.Model):
 
 	def __str__(self):
 		return self.product.title
-
+`
 
 * what we done here ?
 
@@ -104,8 +104,8 @@ next thing is default=False, any field which uses this condition means, that par
 
 now its time to create some tables in our database, most of which is already handled by django, we just need to run following commands
 
-$ python manage.py makemigrations
-$ python manage.py migrate
+$`python manage.py makemigrations`
+$`python manage.py migrate`
 
 simply, the migrations command tells us what changes are going to be made in our database (right now two models will be created one is Book
 and other one is Order)
@@ -123,8 +123,8 @@ from django.contrib import admin
 from .models import Book, Order
 
 
-admin.site.register(Book)
-admin.site.register(Order)
+$`admin.site.register(Book)`
+$`admin.site.register(Order)`
 
 
 Here, .models means from this current directory import the Book and Order model, from Models.py file and
@@ -158,7 +158,7 @@ or out of stock. After filling all the fields click on save button (at bottom ri
 now lets see our books on our webpage but before that we need to work on views. In this case im gonna use 'Class Based Views' which make our 
 code as much DRY as possible and faster to implement. Put the follwing code in your views.py file.
 
-
+`
 from django.shortcuts import render 
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView
@@ -205,7 +205,7 @@ def paymentComplete(request):
 		product=product
 	)
 	return JsonResponse('Payment completed!', safe=False)
-
+`
 
 
 
@@ -226,7 +226,7 @@ two options of Log In and Sign Up)
 At last, we have a function called paymentComplete which basically keeps a record of which book is being purchased by the user and that record gets updated in our Order Model. The payment process can be completed in two ways, by using paypal or debit card.
 
 
-## url.py
+## urls
 
   
 
