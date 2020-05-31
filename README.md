@@ -10,10 +10,10 @@ i recommed you django documentation.
 - [About_this_App](#About_this_App)
 - [Get_Started](#Get_Started)
 - [Books_app](#Books_app)
-- [models.py](#models.py)
-- [admin.py](#admin.py)
+- [models](#models)
 - [migrations](#migrations)
-- [views.py](#views.py)
+- [admin](#admin)
+- [views](#views)
 
 
 ## About_this_App
@@ -49,7 +49,7 @@ open your ecom_project folder, in here you will find settings.py file (open it)
 Go to Installed app section and mention your app name there (as shown below)
 
 
-## models.py
+## models
 
 when done with the settings.py file, open the books folder (our app), in here you we find models.py file (open it)
 Now put the following code in it,
@@ -115,7 +115,7 @@ command then in order to perform those changes we run migrate command)
 Note: its a quick illustration of these commands the depth knowledge is available in documentation
 
 
-## admin.py
+## admin
 
 now we need to register our models in admin file in order in to use them. Put the following code in admin.py file
 
@@ -153,7 +153,7 @@ Note: to fill image_url go to google and select any image now right click that i
 or out of stock. After filling all the fields click on save button (at bottom right). You will see your created book name now. Create few more books if you like (atleast have 3).
 
 
-## views.py
+## views
 
 now lets see our books on our webpage but before that we need to work on views. In this case im gonna use 'Class Based Views' which make our 
 code as much DRY as possible and faster to implement. Put the follwing code in your views.py file.
