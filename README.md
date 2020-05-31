@@ -13,6 +13,7 @@ i recommed you django documentation.
 - [models](#models)
 - [migrations](#migrations)
 - [admin](#admin)
+- [run_server](#run_server)
 - [views](#views)
 
 
@@ -44,7 +45,7 @@ Now, open your favourite IDE and locate this project directory. (Im using VS Cod
 
 Note: at this point django doesnt know about this app, therefore we need to mention this app name inside our settings.py file.
 
-* setting.py 
+* settings.py 
 
 open your ecom_project folder, in here you will find settings.py file (open it)
 Go to Installed app section and mention your app name there (as shown below)
@@ -133,11 +134,12 @@ $`admin.site.register(Order)`
 Here, .models means from this current directory import the Book and Order model, from Models.py file and
 for each model to register we need the command --> admin.site.register(model_name)
 
+## run_server
 
 Now lets check that our model is being registered properly or not. First lets ensure that our server is running properly. Put the following
 commmand in terminal one by one:
 
-python manage.py runserver
+$`python manage.py runserver`
 
 now open this link in your browser http://127.0.0.1:8000/
 
