@@ -3,7 +3,7 @@ An online bookshop developed in django-3 which allow users to purchase books onl
 
 This guide will Step-by-Step help you to create your own ecommerce bookstore application in django. With only HTML, CSS, JAVASCRIPT and yeah our Django Framework.
 
-- [About](#About)
+- [About this](#About)
 
 
 # Heading levels
@@ -12,7 +12,7 @@ This guide will Step-by-Step help you to create your own ecommerce bookstore app
 
 <!-- toc -->
 
-## About
+## About this
 
 This is an h1 heading
 
