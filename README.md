@@ -36,8 +36,9 @@ yash@yash-SVE15113ENB:~/Documents/django_project/$
 
 Lets begin our project by starting our project and installing a books app, type below commands in terminal.
 
-`django-admin startproject ecom_project .` (do not avoid this period)
-`python manage.py startapp books`
+$`django-admin startproject ecom_project .` (do not avoid this period)
+
+$`python manage.py startapp books`
 
 Now, open your favourite IDE and locate this project directory. (Im using VS Code so it should be something like this)
 
@@ -54,30 +55,30 @@ Go to Installed app section and mention your app name there (as shown below)
 when done with the settings.py file, open the books folder (our app), in here you we find models.py file (open it)
 Now put the following code in it,
 
-`
-from django.db import models
-from django.urls import reverse
 
-class Book(models.Model):
-    title  = models.CharField(max_length = 200)
-    author = models.CharField(max_length = 200)
-    description = models.CharField(max_length = 500, default=None)
-    price = models.FloatField(null=True, blank=True)
-    image_url = models.CharField(max_length = 2083, default=False)
-    follow_author = models.CharField(max_length=2083, blank=True)  
-    book_available = models.BooleanField(default=False)
+	from django.db import models
+	from django.urls import reverse
 
-    def __str__(self):
-        return self.title
+	class Book(models.Model):
+	    title  = models.CharField(max_length = 200)
+	    author = models.CharField(max_length = 200)
+	    description = models.CharField(max_length = 500, default=None)
+	    price = models.FloatField(null=True, blank=True)
+	    image_url = models.CharField(max_length = 2083, default=False)
+	    follow_author = models.CharField(max_length=2083, blank=True)  
+	    book_available = models.BooleanField(default=False)
+
+	    def __str__(self):
+		return self.title
 
 
-class Order(models.Model):
-	product = models.ForeignKey(Book, max_length=200, null=True, blank=True, on_delete = models.SET_NULL)
-	created =  models.DateTimeField(auto_now_add=True) 
+	class Order(models.Model):
+		product = models.ForeignKey(Book, max_length=200, null=True, blank=True, on_delete = models.SET_NULL)
+		created =  models.DateTimeField(auto_now_add=True) 
 
-	def __str__(self):
-		return self.product.title
-`
+		def __str__(self):
+			return self.product.title
+
 
 * what we done here ?
 
@@ -105,6 +106,7 @@ next thing is default=False, any field which uses this condition means, that par
 now its time to create some tables in our database, most of which is already handled by django, we just need to run following commands
 
 $`python manage.py makemigrations`
+
 $`python manage.py migrate`
 
 simply, the migrations command tells us what changes are going to be made in our database (right now two models will be created one is Book
@@ -124,6 +126,7 @@ from .models import Book, Order
 
 
 $`admin.site.register(Book)`
+
 $`admin.site.register(Order)`
 
 
@@ -158,54 +161,53 @@ or out of stock. After filling all the fields click on save button (at bottom ri
 now lets see our books on our webpage but before that we need to work on views. In this case im gonna use 'Class Based Views' which make our 
 code as much DRY as possible and faster to implement. Put the follwing code in your views.py file.
 
-`
-from django.shortcuts import render 
-from django.views.generic import ListView, DetailView
-from django.views.generic.edit import CreateView
-from django.contrib.auth.mixins import LoginRequiredMixin 
-from .models import Book, Order
-from django.urls import reverse_lazy
-from django.db.models import Q # for search method
-from django.http import JsonResponse
-import json
+
+	from django.shortcuts import render 
+	from django.views.generic import ListView, DetailView
+	from django.views.generic.edit import CreateView
+	from django.contrib.auth.mixins import LoginRequiredMixin 
+	from .models import Book, Order
+	from django.urls import reverse_lazy
+	from django.db.models import Q # for search method
+	from django.http import JsonResponse
+	import json
 
 
 
-class BooksListView(ListView):
-    model = Book
-    template_name = 'list.html'
+	class BooksListView(ListView):
+	    model = Book
+	    template_name = 'list.html'
 
 
-class BooksDetailView(DetailView):
-    model = Book
-    template_name = 'detail.html'
+	class BooksDetailView(DetailView):
+	    model = Book
+	    template_name = 'detail.html'
 
 
-class SearchResultsListView(ListView):
-	model = Book
-	template_name = 'search_results.html'
+	class SearchResultsListView(ListView):
+		model = Book
+		template_name = 'search_results.html'
 
-	def get_queryset(self): # new
-		query = self.request.GET.get('q')
-		return Book.objects.filter(
-		Q(title__icontains=query) | Q(author__icontains=query)
+		def get_queryset(self): # new
+			query = self.request.GET.get('q')
+			return Book.objects.filter(
+			Q(title__icontains=query) | Q(author__icontains=query)
+			)
+
+	class BookCheckoutView(LoginRequiredMixin, DetailView):
+	    model = Book
+	    template_name = 'checkout.html'
+	    login_url     = 'login'
+
+
+	def paymentComplete(request):
+		body = json.loads(request.body)
+		print('BODY:', body)
+		product = Book.objects.get(id=body['productId'])
+		Order.objects.create(
+			product=product
 		)
-
-class BookCheckoutView(LoginRequiredMixin, DetailView):
-    model = Book
-    template_name = 'checkout.html'
-    login_url     = 'login'
-
-
-def paymentComplete(request):
-	body = json.loads(request.body)
-	print('BODY:', body)
-	product = Book.objects.get(id=body['productId'])
-	Order.objects.create(
-		product=product
-	)
-	return JsonResponse('Payment completed!', safe=False)
-`
+		return JsonResponse('Payment completed!', safe=False)
 
 
 
