@@ -15,4 +15,17 @@ Also, before purchasing any book you will be redirected to the login or signup p
 
 * checkout the site here: https://ym-djecom.herokuapp.com
 
+## Get_Started
+
+I'm assuming that you are already done with setting up virtual enviornment in your system. 
+Ok, now lets move to a location where we can store this project by using terminal or command prompt in windows.
+In my case im at this location
+
+yash@yash-SVE15113ENB:~/Documents/django_project/$ 
+
 ## Books_app
+
+Lets begin our project by installing a books app, type below command in terminal.
+
+django-admin startproject 
+
