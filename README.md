@@ -6,6 +6,8 @@
 # Django-Ecommece-Bookstore
 <p>An online bookshop developed in django-3 which allow users to purchase books online :) </p>
 
+<img src="https://github.com/YashMarmat/Pages-App-django/blob/master/templates/dj-ecom-bstore-pic2.png?raw=true">
+
 This guide will Step-by-Step help you to create your own ecommerce bookstore application in django. With HTML, CSS, JAVASCRIPT and Django Framework. 
 
 Note: this guide is not for absolute beginners so im assuming that you have the basic knowledge of MVT in django to get started. To know more on it i recommed you <a href="https://docs.djangoproject.com/en/3.0/">django documentation</a>.
