@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://twilio-cms-prod.s3.amazonaws.com/images/django-dark.width-808.png" width="40%"><img src="https://media.istockphoto.com/photos/bookstore-written-with-wooden-letters-on-rustic-wooden-surface-picture-id482441110?k=6&m=482441110&s=170667a&w=0&h=i0s0sLZoUOuQ25ljz8FnF0YCpqt-pEoacPwvIbcbAmg=" width="300">
+  <img src="https://twilio-cms-prod.s3.amazonaws.com/images/django-dark.width-808.png" width="40%"><img src="https://media.istockphoto.com/photos/bookstore-written-with-wooden-letters-on-rustic-wooden-surface-picture-id482441110?k=6&m=482441110&s=170667a&w=0&h=i0s0sLZoUOuQ25ljz8FnF0YCpqt-pEoacPwvIbcbAmg=" width="299">
 </p>
 
 
@@ -152,7 +152,7 @@ Now, lets check that our model is being registered properly or not. First lets e
 
 * now open this link in your browser http://127.0.0.1:8000/
 
-You will see a rocket there and a message saying, 'The install worked successfully! Congratulation!'
+You will see a rocket there and a message saying, 'The install worked successfully! Congratulations!'
 
 if yes, we didn't make any mistakes. Good !
 
@@ -267,7 +267,7 @@ In short, here im telling django that im using a seperate urls.py file for my bo
 
 At first i imported 'path' module from django.url library which we will use for url routing, then i imported all the class based views here which we created in views.py file, then in urlpatterns section im telling django at which location or url which webpage should work.
 
-For BookListView.as_view() i used empty quotation marks -> ' '  what it does ? it tells django that on the very first page work as per the BookListView class and then i choose a reference name for this url as 'list' and mentioned it inside name.
+For BookListView.as_view() i used empty quotation marks -> ''  what it does ? it tells django that on the very first page work as per the BookListView class and then i choose a reference name for this url as 'list' and mentioned it inside name.
 
 Next is BookDetailView which will be loaded after the BookListView class. The 'int' in int:pk denotes an integer and the pk denotes primary key. If you remember we created some books on our admin page and when saved it, that book automatically gets an id=1 by default, similary the id for the next books gets incremented by +1 which means the second book gets an id of 2 (id=2) and for third book (id=3) and so on.
 
@@ -344,7 +344,7 @@ provided by django. But we do require a template file for it. Now login template
 * now inside this registration folder create template file and name it --> login.html
 
 
-Now update the login.html file by the code present here --> link
+Now update the login.html file from <a href="https://github.com/YashMarmat/django-ecommece-bookstore/blob/master/templates/registration/login.html">here</a> 
 
 ok, a little more work on logins, by default django doesnt know where to send the user after they log in and after they log out. So we need to use the url reference name (created in urls.py file of books app). So, i want that after the user logs in and logs out that user should be sent to the home page or the very first page of our website and the url working working on that page was 'list'. Remember those empty quotation marks?  see below:
 
@@ -376,7 +376,7 @@ Thats it! login is done. (next signup)
 
 ### signup
 
-Lets think about login again, a user can login only if they have an account on our site right ? so we need to provide a sign up page as well where users can create their account and then can log in successfully. Lets create a seperate app which will handle all the signup process. Just making code easier to read. Follow below commands
+Lets think about login again, a user can login only if they have an account on our site right ? so we need to provide a sign up page as well where users can create their account and then can log in successfully. Lets create a seperate app which will handle all the signup process. Just making code easier to read. Follow below command:
 
 (django_project)$`python manage.py startapp accounts`
 
@@ -427,7 +427,7 @@ go to templates folder and create a signup.html file (Note: do not put signup.ht
 (django_project)$`touch templates/signup.html`
 
 
-put the code in signup.html, present here -->
+put the code in signup.html, present <a href = "https://github.com/YashMarmat/django-ecommece-bookstore/blob/master/templates/signup.html">here</a>.
 
 
 ok, we done with the views now its time for url routing, go ahead and create a new urls.py for this accounts app.
