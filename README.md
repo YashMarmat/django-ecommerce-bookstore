@@ -8,7 +8,9 @@ i recommed you django documentation.
 
 # Table of contents
 - [About_this_App](#About_this_App)
-* [Sub-heading](#sub-heading)  
+* [Sub-heading](#sub-heading)
+- [Heading](#heading)
+  * [Sub-heading](#sub-heading)
 - [Get_Started](#Get_Started)
 - [Books_app](#Books_app)
 - [models](#models)
