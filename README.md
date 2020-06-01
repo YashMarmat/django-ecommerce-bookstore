@@ -9,7 +9,7 @@ i recommed you django documentation.
 # Table of contents
 - [About_this_App](#About_this_App)
 - [Get_Started](#Get_Started)
-- [Books_app](#Books_app)
+- [Books_App](#Books_App)
   * [models](#models)
   * [migrations](#migrations)
   * [admin](#admin)
@@ -19,7 +19,7 @@ i recommed you django documentation.
   * [templates](#templates)
   * [logins](#logins)
   * [views](#views)
-- [accounts_app](#accounts_app)
+- [Accounts_App](#Accounts_App)
   * [signup](#signup)
   * [signup_view](#signup_view)
   * [static_files](#static_files) 
@@ -42,7 +42,7 @@ In my case im at this location
 
 yash@yash-SVE15113ENB:~/Documents/django_project/$ 
 
-## Books_app
+## Books_App
 
 Lets begin our project by starting our project and installing a books app, type below commands in terminal.
 
@@ -364,8 +364,10 @@ Now to make this work open the setting.py file (present inside the ecom_project 
 Thats it! login is done. (next signup)
 
 
+## Accounts_App
 
-### signup
+
+### Signup
 
 Lets think about login again, a user can login only if they have an account on our site right ? so we need to provide a sign up page as well where users can create their account and then can log in successfully. 
 
