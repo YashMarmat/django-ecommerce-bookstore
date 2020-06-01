@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://twilio-cms-prod.s3.amazonaws.com/images/django-dark.width-808.png" width="40%"><img src="https://media.istockphoto.com/photos/bookstore-written-with-wooden-letters-on-rustic-wooden-surface-picture-id482441110?k=6&m=482441110&s=170667a&w=0&h=i0s0sLZoUOuQ25ljz8FnF0YCpqt-pEoacPwvIbcbAmg=" width="299">
+  <img src="https://twilio-cms-prod.s3.amazonaws.com/images/django-dark.width-808.png" width="40%"><img src="https://media.istockphoto.com/photos/bookstore-written-with-wooden-letters-on-rustic-wooden-surface-picture-id482441110?k=6&m=482441110&s=170667a&w=0&h=i0s0sLZoUOuQ25ljz8FnF0YCpqt-pEoacPwvIbcbAmg=" width="298">
 </p>
 
 
@@ -247,7 +247,7 @@ Before putting some code in this file go to ecom_project folder and open urls.py
 	    path('', include('books.urls')),  # changes
 	]
 
-In short, here im telling django that im using a seperate urls.py file for my books app. Now go back to our app level url.py file (or the urls.py file of our books app). Put the following code there
+In short, here im telling django that im using a seperate urls.py file for my books app. Now go back to our app level url.py file (or open the urls.py file of our books app). Put the following code there
 
 
 	from django.urls import path
@@ -282,7 +282,7 @@ Its time for templates now, if you remember we used template_name in our class b
 
 (django_project)$`mkdir templates`
 
-* now open your settings.py file from ecom_project folder and update the Template section in the following manner.
+now open your settings.py file from ecom_project folder and update the Template section in the following manner.
 
 	TEMPLATES = [
 	    {
@@ -502,7 +502,6 @@ All Done! :)
 if you ran into some issues at some point please let me know. Go to issues section of this repository put your problems there. I'll answer them as soon as possible or emial me for any feedback --> yashmarmat08@gmail.com
 
 
- 
 
 
 
