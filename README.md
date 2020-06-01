@@ -1,10 +1,14 @@
+<p align="center">
+  <img src="https://twilio-cms-prod.s3.amazonaws.com/images/django-dark.width-808.png" width="40%"><img src="https://media.istockphoto.com/photos/bookstore-written-with-wooden-letters-on-rustic-wooden-surface-picture-id482441110?k=6&m=482441110&s=170667a&w=0&h=i0s0sLZoUOuQ25ljz8FnF0YCpqt-pEoacPwvIbcbAmg=" width="300">
+</p>
+
+
 # Django-Ecommece-Bookstore
-An online bookshop developed in django-3 which allow users to purchase books online :) 
+<p>An online bookshop developed in django-3 which allow users to purchase books online :) </p>
 
 This guide will Step-by-Step help you to create your own ecommerce bookstore application in django. With only HTML, CSS, JAVASCRIPT and yeah our Django Framework. 
 
-Note: this guide is not for absolute beginners so im assuming you have the basic knowledge of MVT in django to get started. To know more on it
-i recommed you django documentation.
+Note: this guide is not for absolute beginners so im assuming you have the basic knowledge of MVT in django to get started. To know more on it i recommed you django documentation.
 
 # Table of contents
 - [About_this_App](#About_this_App)
@@ -24,7 +28,7 @@ i recommed you django documentation.
   * [signup_view](#signup_view)
   * [static_files](#static_files) 
   
-
+<hr>
 
 ## About_this_App
 A Beautifully designed Online Bookstore which contains multiple Books, the site allows you to search your favourite book in the bookstore, i didnt added too many book in database for now, but you can customize the site the way you like with the help of the source code present in this repository. You can purchase any book you by two payment methods the first option is of paypal and the other one is debit card, use the fake one please :)
@@ -42,13 +46,19 @@ In my case im at this location
 
 yash@yash-SVE15113ENB:~/Documents/django_project/$ 
 
+* Now Setup the virtual environment
+
+$`pipenv shell`
+
+$`pipenv install django==3.0`
+
 ## Books_App
 
 Lets begin our project by starting our project and installing a books app, type below commands in terminal.
 
-$`django-admin startproject ecom_project .` (do not avoid this period)
+(django_project)$`django-admin startproject ecom_project .` (do not avoid this period)
 
-$`python manage.py startapp books`
+(django_project)$`python manage.py startapp books`
 
 Now, open your favourite IDE and locate this project directory. (Im using VS Code so it should be something like this)
 
@@ -115,9 +125,9 @@ next thing is default=False, any field which uses this condition means, that par
 
 now its time to create some tables in our database, most of which is already handled by django, we just need to run following commands
 
-$`python manage.py makemigrations`
+(django_project)$`python manage.py makemigrations`
 
-$`python manage.py migrate`
+(django_project)$`python manage.py migrate`
 
 simply, the migrations command tells us what changes are going to be made in our database (right now two models will be created one is Book
 and other one is Order)
@@ -135,9 +145,9 @@ from django.contrib import admin
 from .models import Book, Order
 
 
-$`admin.site.register(Book)`
+(django_project)$`admin.site.register(Book)`
 
-$`admin.site.register(Order)`
+(django_project)$`admin.site.register(Order)`
 
 
 Here, .models means from this current directory import the Book and Order model, from Models.py file and
@@ -148,7 +158,7 @@ for each model to register we need the command --> admin.site.register(model_nam
 Now lets check that our model is being registered properly or not. First lets ensure that our server is running properly. Put the following
 commmand in terminal one by one:
 
-$`python manage.py runserver`
+(django_project)$`python manage.py runserver`
 
 now open this link in your browser http://127.0.0.1:8000/
 
@@ -222,16 +232,16 @@ code as much DRY as possible and faster to implement. Put the follwing code in y
 
 Note: A lot of things is going on here, ill try keep things as simple as possible, again this guide is not for absolute beginners so im not going to cover core django concepts here but still ill give you some idea of whats being done here. Lets go step by step,
 
-*The 'BookListView' is a class which basically using the django module ListView to output the contents of Our book model (as i choose model = Book) in a list manner and the template on which its working on is list.html.
+* The 'BookListView' is a class which basically using the django module ListView to output the contents of Our book model (as i choose model = Book) in a list manner and the template on which its working on is list.html.
   
-*Similarly, the class 'BookDetailView' class using DetailView to output the contents of Our book model (as i choose model = Book) in a detailed manner and the template on which its working on is detail.html. 
+* Similarly, the class 'BookDetailView' class using DetailView to output the contents of Our book model (as i choose model = Book) in a detailed manner and the template on which its working on is detail.html. 
 
-*The class 'SearchResultsView' class using ListView which provides the search results in a list manner and the template on which its working on is search_results.html. The SearchResultsView will match the search input provided by the user with the book title and the author's name
+* The class 'SearchResultsView' class using ListView which provides the search results in a list manner and the template on which its working on is search_results.html. The SearchResultsView will match the search input provided by the user with the book title and the author's name
 (means you can search a book by its name or by its author name).
 
-*The 'BookCheckoutView' is a class using DetailView and the template on which its working on is checkout.html. So that user can confirm that they are paying for the right book.
+* The 'BookCheckoutView' is a class using DetailView and the template on which its working on is checkout.html. So that user can confirm that they are paying for the right book.
 
-*At last, we have a function called paymentComplete which basically keeps a record of which book is being purchased by the user and that record gets updated in our Order Model. The payment process can be completed in two ways, by using paypal or debit card.
+* At last, we have a function called paymentComplete which basically keeps a record of which book is being purchased by the user and that record gets updated in our Order Model. The payment process can be completed in two ways, by using paypal or debit card.
 
 
 ### urls
@@ -291,7 +301,7 @@ Its time for templates now, if you remember we used template_name in our class b
 First lets create a template folder (note: there are many ways to use templates in django but for now im using following approach)
 your templates folder should be outside your ecom_project folder as shown below.
 
-$`mkdir templates`
+(django_project)$`mkdir templates`
 
 inside templates folder create 5 .html files namely --> base.html, checkout.html, detail.html, list.html, search_results.html (again order doesn't matter)
 
@@ -355,7 +365,7 @@ no updation just for illustation !
 Now to make this work open the setting.py file (present inside the ecom_project folder). Put the below codes at the bottom of the file.
 
 
-### login settings
+### logins
 
 	LOGIN_REDIRECT_URL = 'list'   # controls login
 	LOGOUT_REDIRECT_URL = 'list'  # controls logout
@@ -367,14 +377,14 @@ Thats it! login is done. (next signup)
 ## Accounts_App
 
 
-### Signup
+### signup
 
 Lets think about login again, a user can login only if they have an account on our site right ? so we need to provide a sign up page as well where users can create their account and then can log in successfully. 
 
 Lets create a seperate app which will handle all the signup process. Just making code easier to read. Follow below commands
 
 
-$`python manage.py startapp accounts`
+(django_project)$`python manage.py startapp accounts`
 
 
 To let django know about this app lets update settings.py file (inside ecom_project). Update the file in following manner
@@ -408,7 +418,7 @@ the UserCreationForm is a form provided by django which contains all the neccess
 go to templates folder and create a signup.html file (Note: do not put signup.html file inside registration folder, by doing that django will throw tempate does not exist Error). Follow below code,
 
 
-$`touch templates/signup.html`
+(django_project)$`touch templates/signup.html`
 
 
 put the code in signup.html, present here -->
@@ -416,7 +426,7 @@ put the code in signup.html, present here -->
 
 ok, we done with the views now its time for url routing, go ahead and create a new urls.py for this accounts app.
 
-$`touch accounts/urls.py`
+(django_project)$`touch accounts/urls.py`
 
 put the below code in this file
 
@@ -468,17 +478,17 @@ Ok, to use some static css in django we need to update few thing in our settings
 
 * now create a static folder and place it outside the ecom_project folder. Then inside this static folder create another folder called 'css' then inside this css folder create a file called base.css (follow below code).
 
-$`mkdir static`
+(django_project)$`mkdir static`
 
-$`mkdir static/css`
+(django_project)$`mkdir static/css`
 
-$`touch static/css/base.css`
+(django_project)$`touch static/css/base.css`
 
 open 'base.css' folder and put this code in it -->
 
 Now, save everything and test your bookstore website
 
-$ python manage.py runserver
+(django_project)$ python manage.py runserver
 
 
 All Done! 
