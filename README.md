@@ -1,7 +1,7 @@
 # Django-Ecommece-Bookstore
 An online bookshop developed in django-3 which allow users to purchase books online :) 
 
-This guide will Step-by-Step help you to create your own ecommerce bookstore application in django. With only HTML, CSS, JAVASCRIPT and yeah our Django Framework. 
+This guide will Step-by-Step help you to create your own ecommerce bookstore application in django. With HTML, CSS, JAVASCRIPT and yup our Django Framework. 
 
 Note: this guide is not for absolute beginners so im assuming you have the basic knowledge of MVT in django to get started. To know more on it
 i recommed you django documentation.
@@ -23,7 +23,7 @@ A Beautifully designed Online Bookstore which contains multiple Books, the site 
 Also, before purchasing any book you will be redirected to the login or signup page. So that new users can signup on the site and then can buy their favourite book. The site also informs users which book is available and which one is out of stock !.
 
 
-* checkout the site here: https://ym-djecom.herokuapp.com
+* see the app in action here: https://ym-djecom.herokuapp.com
 
 ## Get_Started
 
@@ -167,7 +167,6 @@ code as much DRY as possible and faster to implement. Put the follwing code in y
 	from django.shortcuts import render 
 	from django.views.generic import ListView, DetailView
 	from django.views.generic.edit import CreateView
-	from django.contrib.auth.mixins import LoginRequiredMixin 
 	from .models import Book, Order
 	from django.urls import reverse_lazy
 	from django.db.models import Q # for search method
@@ -196,10 +195,9 @@ code as much DRY as possible and faster to implement. Put the follwing code in y
 			Q(title__icontains=query) | Q(author__icontains=query)
 			)
 
-	class BookCheckoutView(LoginRequiredMixin, DetailView):
+	class BookCheckoutView(DetailView):
 	    model = Book
 	    template_name = 'checkout.html'
-	    login_url     = 'login'
 
 
 	def paymentComplete(request):
@@ -222,19 +220,163 @@ Similarly, the class 'BookDetailView' class using DetailView to output the conte
 The class 'SearchResultsView' class using ListView which provides the search results in a list manner and the template on which its working on is search_results.html. The SearchResultsView will match the search input provided by the user with the book title and the author's name
 (means you can search a book by its name or by its author name).
 
-The 'BookCheckoutView' is a class using DetailView and the template on which its working on is checkout.html. Now this class is working on 
-'LoginRequiredMixin' it basically makes sure that before visiting the checkout page the user must be login (means the user needs to have an
-account on our website before purchasing any books, if the user is not logged in then the user will be redirected to page which contains 
-two options of Log In and Sign Up)
+The 'BookCheckoutView' is a class using DetailView and the template on which its working on is checkout.html. So that user can confirm that they are paying for the right book.
 
 At last, we have a function called paymentComplete which basically keeps a record of which book is being purchased by the user and that record gets updated in our Order Model. The payment process can be completed in two ways, by using paypal or debit card.
 
 
 ## urls
 
-  
+now to make our class based views work we need url routing. By default we have a single urls.py file in our ecom_project directory and not in books app. So lets create a urls.py file in our app (why so ? so that django can easily find which url is working for which app, therfore instead of putting all urls in a single file its better to create seperate urls.py file for each app). Inside your books app create a new urls.py file. (you can do it by using your ide or by following below code)
+
+for linux users
+
+$touch books/urls.py
+
+
+now before putting some code in this file go to ecom_project folder and open urls.py file. Update this file in the follwing manner
+
+from django.contrib import admin
+from django.urls import path, include # changes
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('books.urls')),  # changes
+]
+
+* in short, here im telling django that im using a seperate urls.py file for my books app.
+
+
+Now go back to our app level url.py file (or the urls.py file of our books app). Put the following code there
+
+
+from django.urls import path
+from .views import BooksListView, BooksDetailView, BookCheckoutView, paymentComplete, SearchResultsListView
+
+
+urlpatterns = [
+    path('', BooksListView.as_view(), name = 'list'),
+    path('<int:pk>/', BooksDetailView.as_view(), name = 'detail'),
+    path('<int:pk>/checkout/', BookCheckoutView.as_view(), name = 'checkout'),
+    path('complete/', paymentComplete, name = 'complete'),
+    path('search/', SearchResultsListView.as_view(), name = 'search_results'),
+]
+
+
+* what we done here ? 
+
+at first imported 'path' module from django.url library which we will use for url routing, then i imported all the class based views here which we created in views.py file, then in urlpatterns section im telling django at which location or url which webpage should work.
+
+For BookListView.as_view() i used empty quotation marks -> ' '  what it does ? it tells django that on the very first page i want the content 
+of my BookListView class and then i choose a reference name for this url as 'list' and mentioned it inside name.
+
+For BookDetailView i used <int:pk>/ which means the content of this class will be shown after the BookListView class. The int in int:pk denotes an integer and the pk denotes primary key. If you remember we created some books on our admin page and when saved it, that book automatically gets an id=1 by default, similary the id for the next books gets incremented by +1 which means the second book gets an id of 2 (id=2) and for third one (id=3) and so on.
+
+Also, the BookDetailView uses this id to show the details of a particular book. Means if id '1' is requested we will see details of first book, when id=2 then we get details of second book and so on. The BookCheckout will work after this id page as you can see in the url of BookCheckout class and last two urls are working seperately.
+
+
+## Templates
+
+Its time for templates now, if you remember we used template_name in our class based views. The content on the webpage basically comes from templates (actually html files) and the views holds the overall functionality in short. 
+
+First lets create a template folder (note: there are many ways to use templates in django but for now im using following approach)
+your templates folder should be outside your ecom_project folder as shown below.
+
+$mkdir templates
+
+inside templates folder create 5 .html files namely --> base.html, checkout.html, detail.html, list.html, search_results.html (again order doesn't matter)
+
+link for templates
+
+Note: detail knowledge of templates is not given here as i said earlier im assuming that you have the basic knowlege of MVT in django.
+
+* base.html contains the navigation bar for our website taken form bootstrap.
+* list.html provides listing of all the books (created on admin page).
+* detail.html provides details like book title, author name, description and detail of all the fields present in our Book model.
+* checkout.html provides the detail of which book you selected for purchase and provides you two option of payment --> paypal and debit card.
+* search_results provides you the search results by matching the user input (provided in search bar) with the book title and author name.
+
+
+At this point of project is almost ready, at this point anyone can buy books from our online bookstore without creating an account on out website. So we going to restrict that by using a Mixin in django called LoginRequiredMixin. Update your BookCheckoutView class present in views.py file of books app. Code below, 
+
+	from django.contrib.auth.mixins import LoginRequiredMixin 
+
+	class BookCheckoutView(LoginRequiredMixin, DetailView):
+	    model = Book
+	    template_name = 'checkout.html'
+	    login_url     = 'login'
+
+Now this class is working on 'LoginRequiredMixin' it basically makes sure that before visiting the checkout page the user must login (means the user needs to have an account on our website before purchasing any books, if the user is not logged in then the user will be redirected to page which contains two options --> Log In and Sign Up). More on Signup in short.
+
+
+now to make login work go to the urls.py file of ecom_project and open it. Update the code as shown below,
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('books.urls')),
+    path('accounts/', include("django.contrib.auth.urls")),   # changes
+]
+
+Note: we do not require to create a seperate class based view or function based view, all that will be handled by 'django.contrib.auth.urls'
+provided by django. But we do require a template file for it. Now login template needs to created in a specific way. As illustrated below,
+
+
+* inside tempaltes folder create another folder called 'registration'
+* now inside this registration folder create template file and name it --> login.html
+
+
+Now update the login.html file by the code present here --> link
+
+ok, a little more work on logins, by default django doesnt know where to send the user after they log in and after they log out. So we need to use the url reference name (created in urls.py file of books app). So, i want that after the user logs in and logs out that user should be sent to the home page or the very first page of our website and the url working working on that page was 'list'. Remember those empty quotation marks?  see below:
+
+no updation just for illustation !
+
+urlpatterns = [
+    path('', BooksListView.as_view(), name = 'list'),  # the home page or list page
+    path('<int:pk>/', BooksDetailView.as_view(), name = 'detail'),
+    path('<int:pk>/checkout/', BookCheckoutView.as_view(), name = 'checkout'),
+    path('complete/', paymentComplete, name = 'complete'),
+    path('search/', SearchResultsListView.as_view(), name = 'search_results'),
+] 
+
+
+Now to make this work open the setting.py file (present inside the ecom_project folder). Put the below codes at the bottom of the file.
+
+
+# login settings
+
+LOGIN_REDIRECT_URL = 'list'   # controls login
+LOGOUT_REDIRECT_URL = 'list'  # controls logout
+
+
+Thats it! login is done. (next signup)
+
+
+
+## Signup
+
+Lets think about login again, a user can login only if they have an account on our site right ? so we need to provide a sign up page as well where users can create their account and then can log in successfully. 
+
+Lets create a seperate app which will handle all the signup process. Just making code easier to read.
+
 
  
+
+ 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
