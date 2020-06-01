@@ -1,13 +1,14 @@
 # Django-Ecommece-Bookstore
 An online bookshop developed in django-3 which allow users to purchase books online :) 
 
-This guide will Step-by-Step help you to create your own ecommerce bookstore application in django. With HTML, CSS, JAVASCRIPT and yup our Django Framework. 
+This guide will Step-by-Step help you to create your own ecommerce bookstore application in django. With only HTML, CSS, JAVASCRIPT and yeah our Django Framework. 
 
 Note: this guide is not for absolute beginners so im assuming you have the basic knowledge of MVT in django to get started. To know more on it
 i recommed you django documentation.
 
 # Table of contents
 - [About_this_App](#About_this_App)
+* [Sub-heading](#sub-heading)  
 - [Get_Started](#Get_Started)
 - [Books_app](#Books_app)
 - [models](#models)
@@ -23,7 +24,7 @@ A Beautifully designed Online Bookstore which contains multiple Books, the site 
 Also, before purchasing any book you will be redirected to the login or signup page. So that new users can signup on the site and then can buy their favourite book. The site also informs users which book is available and which one is out of stock !.
 
 
-* see the app in action here: https://ym-djecom.herokuapp.com
+* checkout the site here: https://ym-djecom.herokuapp.com
 
 ## Get_Started
 
@@ -346,7 +347,7 @@ urlpatterns = [
 Now to make this work open the setting.py file (present inside the ecom_project folder). Put the below codes at the bottom of the file.
 
 
-# login settings
+## login settings
 
 LOGIN_REDIRECT_URL = 'list'   # controls login
 LOGOUT_REDIRECT_URL = 'list'  # controls logout
@@ -360,7 +361,130 @@ Thats it! login is done. (next signup)
 
 Lets think about login again, a user can login only if they have an account on our site right ? so we need to provide a sign up page as well where users can create their account and then can log in successfully. 
 
-Lets create a seperate app which will handle all the signup process. Just making code easier to read.
+Lets create a seperate app which will handle all the signup process. Just making code easier to read. Follow below commands
+
+
+$ python manage.py startapp accounts
+
+
+To let django know about this app lets update settings.py file (inside ecom_project). Update the file in following manner
+
+
+## signup_view
+
+
+now we will create a new class called SignUpView which will handle the sign up page. Put below code in signup.html file
+
+
+
+from django.urls import reverse_lazy
+from django.contrib.auth.forms import UserCreationForm
+from django.views import generic
+
+
+class SignUpView(generic.CreateView):
+    form_class    = UserCreationForm
+    success_url   = reverse_lazy('login')
+    template_name = 'signup.html'
+
+
+* what we done here ?
+
+at first i imported reverse_lazy a module which takes a url name, the url metioned in reverse lazy basically loads that url page when user is done with the current page. Means when the user fills the signup page successfully he will be redirected to the login page. see this line of code -->  success_url = reverse_lazy('login') in above class.
+
+the UserCreationForm is a form provided by django which contains all the neccessary fields required for a signup page. Means we don't need to create a signup page by our own and in the last it will load the content present in the template file mentioned in this class.
+
+
+* now time for signup.html template 
+
+go to templates folder and create a signup.html file (Note: do not put signup.html file inside registration folder, by doing that django will throw tempate does not exist Error). Follow below code,
+
+
+$ touch templates/signup.html
+
+
+put the code in signup.html, present here -->
+
+
+ok, we done with the views now its time for url routing, go ahead and create a new urls.py for this accounts app.
+
+$ touch accounts/urls.py
+
+put the below code in this file
+
+
+
+from django.urls import path
+from .views import SignUpView
+
+urlpatterns = [
+    path('accounts/', SignUpView.as_view(), name = 'signup'),
+]
+
+
+Now, as we did earlier we let django know we are using a seperate urls.py file for our accounts app. Update the urls.py file of ecom_project in the following manner,
+
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('books.urls')),
+    path('', include("accounts.urls")),  # changes
+    path('accounts/', include("django.contrib.auth.urls")),   # working for logins
+]
+
+
+
+signup process is completed !
+
+
+## static_files
+
+In short, a static file basically takes care of all the css, javasript and Images present in our project. I used a lot of css in my search bar if you noticed by visting my bookstore site. Providing you detail knowledge of it is not the scope of this guide, but dont worry its not that complicated to understand if you have even basic knowledge of CSS :)
+
+I also used some javasript in my chekout.html file but again providing the detail knowledge of it is not the scope of this guide, but if you have the basic knowledge javascript you will get it.
+
+Ok, to use some static css in django we need to update few thing in our settings.py, open it and put the code at bottom of the file. 
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.0/howto/static-files/
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # requires collectstatic command
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+# It’s often the case that there will be multiple directories
+# with static files within a project so Python brackets [] , 
+# which denote a list 120 , are typically added here to 
+# accommodate future additions.
+
+
+# (optional)
+STATICFILES_FINDERS = [
+"django.contrib.staticfiles.finders.FileSystemFinder",
+"django.contrib.staticfiles.finders.AppDirectoriesFinder",
+]
+
+
+* now create a static folder and place it outside the ecom_project folder. Then inside this static folder create another folder called 'css' then inside this css folder create a file called base.css (follow below code).
+
+$ mkdir static
+$ mkdir static/css
+$ touch static/css/base.css
+
+open 'base.css' folder and put this code in it -->
+
+
+
+
+ 
+
+
+
+
+
 
 
  
