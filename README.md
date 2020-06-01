@@ -312,6 +312,8 @@ Note: detail knowledge of templates is not given here as i said earlier im assum
 * checkout.html provides the detail of which book you selected for purchase and provides you two option of payment --> paypal and debit card.
 * search_results provides you the search results by matching the user input (provided in search bar) with the book title and author name.
 
+### logins
+
 
 At this point anyone can buy books from our online bookstore without creating an account on out website. So we going to restrict that by using a Mixin in django called LoginRequiredMixin. Update your BookCheckoutView class present in views.py file of books app. Code below, 
 
@@ -323,7 +325,6 @@ At this point anyone can buy books from our online bookstore without creating an
 	    login_url     = 'login'
 
 Now this class is working on 'LoginRequiredMixin' it basically makes sure that before visiting the checkout page the user must login (means the user needs to have an account on our website before purchasing any books, if the user is not logged in then the user will be redirected to page which contains two options --> Log In and Sign Up). More on Signup in short.
-
 
 now to make login work go to the urls.py file of ecom_project and open it. Update the code as shown below,
 
@@ -361,8 +362,6 @@ no updation just for illustation !
 
 Now to make this work open the setting.py file (present inside the ecom_project folder). Put the below codes at the bottom of the file.
 
-
-### logins
 
 	LOGIN_REDIRECT_URL = 'list'   # controls login
 	LOGOUT_REDIRECT_URL = 'list'  # controls logout
