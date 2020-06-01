@@ -8,7 +8,6 @@ i recommed you django documentation.
 
 # Table of contents
 - [About_this_App](#About_this_App)
-* [Sub-heading](#sub-heading)
 - [Get_Started](#Get_Started)
 - [Books_app](#Books_app)
   * [models](#models)
@@ -16,6 +15,16 @@ i recommed you django documentation.
   * [admin](#admin)
   * [server](#server)
   * [views](#views)
+  * [urls](#urls)
+  * [templates](#templates)
+  * [logins](#logins)
+  * [views](#views)
+- [accounts_app](#accounts_app)
+  * [signup](#signup)
+  * [signup_view](#signup_view)
+  * [static_files](#static_files) 
+  
+
 
 ## About_this_App
 A Beautifully designed Online Bookstore which contains multiple Books, the site allows you to search your favourite book in the bookstore, i didnt added too many book in database for now, but you can customize the site the way you like with the help of the source code present in this repository. You can purchase any book you by two payment methods the first option is of paypal and the other one is debit card, use the fake one please :)
