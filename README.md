@@ -51,7 +51,7 @@ open your ecom_project folder, in here you will find settings.py file (open it)
 Go to Installed app section and mention your app name there (as shown below)
 
 
-## models
+### models
 
 when done with the settings.py file, open the books folder (our app), in here you we find models.py file (open it)
 Now put the following code in it,
@@ -118,7 +118,7 @@ command then in order to perform those changes we run migrate command)
 Note: its a quick illustration of these commands the depth knowledge is available in documentation
 
 
-## admin
+### admin
 
 now we need to register our models in admin file in order in to use them. Put the following code in admin.py file
 
@@ -134,7 +134,7 @@ $`admin.site.register(Order)`
 Here, .models means from this current directory import the Book and Order model, from Models.py file and
 for each model to register we need the command --> admin.site.register(model_name)
 
-## run_server
+### server
 
 Now lets check that our model is being registered properly or not. First lets ensure that our server is running properly. Put the following
 commmand in terminal one by one:
@@ -158,7 +158,7 @@ Note: to fill image_url go to google and select any image now right click that i
 or out of stock. After filling all the fields click on save button (at bottom right). You will see your created book name now. Create few more books if you like (atleast have 3).
 
 
-## views
+### views
 
 now lets see our books on our webpage but before that we need to work on views. In this case im gonna use 'Class Based Views' which make our 
 code as much DRY as possible and faster to implement. Put the follwing code in your views.py file.
@@ -211,21 +211,21 @@ code as much DRY as possible and faster to implement. Put the follwing code in y
 
 
 
-* Note: A lot of things is going on here, ill try keep things as simple as possible, again this guide is not for absolute beginners so im not going to cover core django concepts here but still ill give you some idea of whats being done here. Lets go step by step,
+Note: A lot of things is going on here, ill try keep things as simple as possible, again this guide is not for absolute beginners so im not going to cover core django concepts here but still ill give you some idea of whats being done here. Lets go step by step,
 
-The 'BookListView' is a class which basically using the django module ListView to output the contents of Our book model (as i choose model = Book) in a list manner and the template on which its working on is list.html.
+*The 'BookListView' is a class which basically using the django module ListView to output the contents of Our book model (as i choose model = Book) in a list manner and the template on which its working on is list.html.
   
-Similarly, the class 'BookDetailView' class using DetailView to output the contents of Our book model (as i choose model = Book) in a detailed manner and the template on which its working on is detail.html. 
+*Similarly, the class 'BookDetailView' class using DetailView to output the contents of Our book model (as i choose model = Book) in a detailed manner and the template on which its working on is detail.html. 
 
-The class 'SearchResultsView' class using ListView which provides the search results in a list manner and the template on which its working on is search_results.html. The SearchResultsView will match the search input provided by the user with the book title and the author's name
+*The class 'SearchResultsView' class using ListView which provides the search results in a list manner and the template on which its working on is search_results.html. The SearchResultsView will match the search input provided by the user with the book title and the author's name
 (means you can search a book by its name or by its author name).
 
-The 'BookCheckoutView' is a class using DetailView and the template on which its working on is checkout.html. So that user can confirm that they are paying for the right book.
+*The 'BookCheckoutView' is a class using DetailView and the template on which its working on is checkout.html. So that user can confirm that they are paying for the right book.
 
-At last, we have a function called paymentComplete which basically keeps a record of which book is being purchased by the user and that record gets updated in our Order Model. The payment process can be completed in two ways, by using paypal or debit card.
+*At last, we have a function called paymentComplete which basically keeps a record of which book is being purchased by the user and that record gets updated in our Order Model. The payment process can be completed in two ways, by using paypal or debit card.
 
 
-## urls
+### urls
 
 now to make our class based views work we need url routing. By default we have a single urls.py file in our ecom_project directory and not in books app. So lets create a urls.py file in our app (why so ? so that django can easily find which url is working for which app, therfore instead of putting all urls in a single file its better to create seperate urls.py file for each app). Inside your books app create a new urls.py file. (you can do it by using your ide or by following below code)
 
@@ -236,13 +236,13 @@ $touch books/urls.py
 
 now before putting some code in this file go to ecom_project folder and open urls.py file. Update this file in the follwing manner
 
-from django.contrib import admin
-from django.urls import path, include # changes
+	from django.contrib import admin
+	from django.urls import path, include # changes
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('books.urls')),  # changes
-]
+	urlpatterns = [
+	    path('admin/', admin.site.urls),
+	    path('', include('books.urls')),  # changes
+	]
 
 * in short, here im telling django that im using a seperate urls.py file for my books app.
 
@@ -250,17 +250,17 @@ urlpatterns = [
 Now go back to our app level url.py file (or the urls.py file of our books app). Put the following code there
 
 
-from django.urls import path
-from .views import BooksListView, BooksDetailView, BookCheckoutView, paymentComplete, SearchResultsListView
+	from django.urls import path
+	from .views import BooksListView, BooksDetailView, BookCheckoutView, paymentComplete, SearchResultsListView
 
 
-urlpatterns = [
-    path('', BooksListView.as_view(), name = 'list'),
-    path('<int:pk>/', BooksDetailView.as_view(), name = 'detail'),
-    path('<int:pk>/checkout/', BookCheckoutView.as_view(), name = 'checkout'),
-    path('complete/', paymentComplete, name = 'complete'),
-    path('search/', SearchResultsListView.as_view(), name = 'search_results'),
-]
+	urlpatterns = [
+	    path('', BooksListView.as_view(), name = 'list'),
+	    path('<int:pk>/', BooksDetailView.as_view(), name = 'detail'),
+	    path('<int:pk>/checkout/', BookCheckoutView.as_view(), name = 'checkout'),
+	    path('complete/', paymentComplete, name = 'complete'),
+	    path('search/', SearchResultsListView.as_view(), name = 'search_results'),
+	]
 
 
 * what we done here ? 
@@ -275,14 +275,14 @@ For BookDetailView i used <int:pk>/ which means the content of this class will b
 Also, the BookDetailView uses this id to show the details of a particular book. Means if id '1' is requested we will see details of first book, when id=2 then we get details of second book and so on. The BookCheckout will work after this id page as you can see in the url of BookCheckout class and last two urls are working seperately.
 
 
-## Templates
+### templates
 
 Its time for templates now, if you remember we used template_name in our class based views. The content on the webpage basically comes from templates (actually html files) and the views holds the overall functionality in short. 
 
 First lets create a template folder (note: there are many ways to use templates in django but for now im using following approach)
 your templates folder should be outside your ecom_project folder as shown below.
 
-$mkdir templates
+$`mkdir templates`
 
 inside templates folder create 5 .html files namely --> base.html, checkout.html, detail.html, list.html, search_results.html (again order doesn't matter)
 
@@ -311,14 +311,14 @@ Now this class is working on 'LoginRequiredMixin' it basically makes sure that b
 
 now to make login work go to the urls.py file of ecom_project and open it. Update the code as shown below,
 
-from django.contrib import admin
-from django.urls import path, include
+	from django.contrib import admin
+	from django.urls import path, include
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('books.urls')),
-    path('accounts/', include("django.contrib.auth.urls")),   # changes
-]
+	urlpatterns = [
+	    path('admin/', admin.site.urls),
+	    path('', include('books.urls')),
+	    path('accounts/', include("django.contrib.auth.urls")),   # changes
+	]
 
 Note: we do not require to create a seperate class based view or function based view, all that will be handled by 'django.contrib.auth.urls'
 provided by django. But we do require a template file for it. Now login template needs to created in a specific way. As illustrated below,
@@ -334,57 +334,55 @@ ok, a little more work on logins, by default django doesnt know where to send th
 
 no updation just for illustation !
 
-urlpatterns = [
-    path('', BooksListView.as_view(), name = 'list'),  # the home page or list page
-    path('<int:pk>/', BooksDetailView.as_view(), name = 'detail'),
-    path('<int:pk>/checkout/', BookCheckoutView.as_view(), name = 'checkout'),
-    path('complete/', paymentComplete, name = 'complete'),
-    path('search/', SearchResultsListView.as_view(), name = 'search_results'),
-] 
+	urlpatterns = [
+	    path('', BooksListView.as_view(), name = 'list'),  # the home page or list page
+	    path('<int:pk>/', BooksDetailView.as_view(), name = 'detail'),
+	    path('<int:pk>/checkout/', BookCheckoutView.as_view(), name = 'checkout'),
+	    path('complete/', paymentComplete, name = 'complete'),
+	    path('search/', SearchResultsListView.as_view(), name = 'search_results'),
+	] 
 
 
 Now to make this work open the setting.py file (present inside the ecom_project folder). Put the below codes at the bottom of the file.
 
 
-## login settings
+### login settings
 
-LOGIN_REDIRECT_URL = 'list'   # controls login
-LOGOUT_REDIRECT_URL = 'list'  # controls logout
+	LOGIN_REDIRECT_URL = 'list'   # controls login
+	LOGOUT_REDIRECT_URL = 'list'  # controls logout
 
 
 Thats it! login is done. (next signup)
 
 
 
-## Signup
+### signup
 
 Lets think about login again, a user can login only if they have an account on our site right ? so we need to provide a sign up page as well where users can create their account and then can log in successfully. 
 
 Lets create a seperate app which will handle all the signup process. Just making code easier to read. Follow below commands
 
 
-$ python manage.py startapp accounts
+$`python manage.py startapp accounts`
 
 
 To let django know about this app lets update settings.py file (inside ecom_project). Update the file in following manner
 
 
-## signup_view
+### signup_view
 
 
 now we will create a new class called SignUpView which will handle the sign up page. Put below code in signup.html file
 
+	from django.urls import reverse_lazy
+	from django.contrib.auth.forms import UserCreationForm
+	from django.views import generic
 
 
-from django.urls import reverse_lazy
-from django.contrib.auth.forms import UserCreationForm
-from django.views import generic
-
-
-class SignUpView(generic.CreateView):
-    form_class    = UserCreationForm
-    success_url   = reverse_lazy('login')
-    template_name = 'signup.html'
+	class SignUpView(generic.CreateView):
+	    form_class    = UserCreationForm
+	    success_url   = reverse_lazy('login')
+	    template_name = 'signup.html'
 
 
 * what we done here ?
@@ -399,7 +397,7 @@ the UserCreationForm is a form provided by django which contains all the neccess
 go to templates folder and create a signup.html file (Note: do not put signup.html file inside registration folder, by doing that django will throw tempate does not exist Error). Follow below code,
 
 
-$ touch templates/signup.html
+$`touch templates/signup.html`
 
 
 put the code in signup.html, present here -->
@@ -407,39 +405,37 @@ put the code in signup.html, present here -->
 
 ok, we done with the views now its time for url routing, go ahead and create a new urls.py for this accounts app.
 
-$ touch accounts/urls.py
+$`touch accounts/urls.py`
 
 put the below code in this file
 
+	from django.urls import path
+	from .views import SignUpView
 
-
-from django.urls import path
-from .views import SignUpView
-
-urlpatterns = [
-    path('accounts/', SignUpView.as_view(), name = 'signup'),
-]
+	urlpatterns = [
+	    path('accounts/', SignUpView.as_view(), name = 'signup'),
+	]
 
 
 Now, as we did earlier we let django know we are using a seperate urls.py file for our accounts app. Update the urls.py file of ecom_project in the following manner,
 
 
-from django.contrib import admin
-from django.urls import path, include
+	from django.contrib import admin
+	from django.urls import path, include
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('books.urls')),
-    path('', include("accounts.urls")),  # changes
-    path('accounts/', include("django.contrib.auth.urls")),   # working for logins
-]
+	urlpatterns = [
+	    path('admin/', admin.site.urls),
+	    path('', include('books.urls')),
+	    path('', include("accounts.urls")),  # changes
+	    path('accounts/', include("django.contrib.auth.urls")),   # working for logins
+	]
 
 
 
 signup process is completed !
 
 
-## static_files
+### static_files
 
 In short, a static file basically takes care of all the css, javasript and Images present in our project. I used a lot of css in my search bar if you noticed by visting my bookstore site. Providing you detail knowledge of it is not the scope of this guide, but dont worry its not that complicated to understand if you have even basic knowledge of CSS :)
 
@@ -447,35 +443,36 @@ I also used some javasript in my chekout.html file but again providing the detai
 
 Ok, to use some static css in django we need to update few thing in our settings.py, open it and put the code at bottom of the file. 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # requires collectstatic command
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-
-# It’s often the case that there will be multiple directories
-# with static files within a project so Python brackets [] , 
-# which denote a list 120 , are typically added here to 
-# accommodate future additions.
+	STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # requires collectstatic command
+	STATIC_URL = '/static/'
+	STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 
-# (optional)
-STATICFILES_FINDERS = [
-"django.contrib.staticfiles.finders.FileSystemFinder",
-"django.contrib.staticfiles.finders.AppDirectoriesFinder",
-]
+	# (optional)
+	STATICFILES_FINDERS = [
+	"django.contrib.staticfiles.finders.FileSystemFinder",
+	"django.contrib.staticfiles.finders.AppDirectoriesFinder",
+	]
 
 
 * now create a static folder and place it outside the ecom_project folder. Then inside this static folder create another folder called 'css' then inside this css folder create a file called base.css (follow below code).
 
-$ mkdir static
-$ mkdir static/css
-$ touch static/css/base.css
+$`mkdir static`
+
+$`mkdir static/css`
+
+$`touch static/css/base.css`
 
 open 'base.css' folder and put this code in it -->
 
+Now, save everything and test your bookstore website
 
+$ python manage.py runserver
+
+
+All Done! 
+
+if you ran into some issues at some point please let me know. Go to issues section of this repository put your problems there. I'll answer them as soon as possible or emial me for any feedback --> yashmarmat08@gmail.com
 
 
  
