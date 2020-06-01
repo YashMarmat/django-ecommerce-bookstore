@@ -498,7 +498,7 @@ Now, save everything and test your bookstore website :)
 
 All Done! :)
 
-if you ran into some issues at some point please let me know. Go to issues section of this repository put your problems there. I'll answer them as soon as possible or emial me for any feedback --> yashmarmat08@gmail.com
+if you ran into some issues at some point please let me know. Go to issues section of this repository put your problems there. I'll answer them as soon as possible or email me for any feedback --> yashmarmat08@gmail.com
 
 
 
