@@ -1,4 +1,4 @@
-<p align="center">
+<p id ="top" align="center">
   <img src="https://github.com/YashMarmat/Pages-App-django/blob/master/templates/django bookstore logo.png" width="90%">
 </p>
 
@@ -504,6 +504,7 @@ All Done! :)
 
 if you ran into some issues at some point please let me know. Go to issues section of this repository put your problems there. I'll answer them as soon as possible or email me for any feedback --> yashmarmat08@gmail.com
 
+<p><a href="#top">Back to Top</a></p>
 
 
 
