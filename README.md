@@ -9,7 +9,7 @@
 <img src="https://github.com/YashMarmat/Pages-App-django/blob/master/templates/dj-ecom-bstore-pic2.png?raw=true">
 
 ### Live App
-* checkout the site here: https://dj-bookstore.onrender.com/
+* checkout the site here: <a href="https://dj-bookstore.onrender.com/">Deployed App</a>
 
 ### Short Note
 
