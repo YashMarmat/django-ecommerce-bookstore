@@ -38,7 +38,7 @@ Also, before purchasing any book you will be redirected to the login or signup p
 
 Uses Client Side Integration approach.
 
-* checkout the site here: https://ym-djecom.herokuapp.com
+* checkout the site here: https://dj-bookstore.onrender.com/
 
 ## Get_Started
 
