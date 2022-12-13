@@ -9,7 +9,10 @@
 <img src="https://github.com/YashMarmat/Pages-App-django/blob/master/templates/dj-ecom-bstore-pic2.png?raw=true">
 
 ### Live App
-* checkout the site here: <a href="https://dj-bookstore.onrender.com/" target="_blank" >Deployed App</a>
+* checkout the site here: <a href="https://dj-bookstore.onrender.com/" target="_blank" >Deployed App</a> (little note below)
+
+(Note: The website can take upto 30 seconds (hosted on Render free tier services), as the project has no clients, its just for learning, please refer the source
+code to run locally).
 
 ### Short Note
 
