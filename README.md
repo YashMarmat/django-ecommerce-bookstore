@@ -35,7 +35,8 @@ Note: this guide is not for absolute beginners so im assuming that you have the 
 - [Accounts_App](#Accounts_App)
   * [signup](#signup)
   * [signup_view](#signup_view)
-  * [static_files](#static_files) 
+  * [static_files](#static_files)
+- [Paypal_payment_process](#Paypal_Payment_Process) 
   
 <hr>
 
@@ -507,6 +508,9 @@ Now, save everything and test your bookstore website :)
 All Done! :)
 
 if you ran into some issues at some point please let me know. Go to issues section of this repository put your problems there. I'll answer them as soon as possible or email me for any feedback --> yashmarmat08@gmail.com
+
+### Paypal_payment_process
+https://scribehow.com/shared/How_to_complete_a_purchase_on_a_website__ereaJRxxQeSAuI-LS1zLbA
 
 <p><a href="#top">Back to Top</a></p>
 
