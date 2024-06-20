@@ -36,7 +36,8 @@ Note: this guide is not for absolute beginners so im assuming that you have the 
   * [signup](#signup)
   * [signup_view](#signup_view)
   * [static_files](#static_files)
-- [Paypal_payment_process](#Paypal_Payment_Process) 
+- [Paypal_payment_process](#Paypal_Payment_Process)
+- [Running project via docker](#Run_via_Docker)
   
 <hr>
 
@@ -512,55 +513,10 @@ if you ran into some issues at some point please let me know. Go to issues secti
 ### Paypal_payment_process
 https://scribehow.com/shared/How_to_complete_a_purchase_on_a_website__ereaJRxxQeSAuI-LS1zLbA
 
+### Run_via_Docker
+
+`docker compose up --build` (to build and start the docker container)
+
+`docker compose down` (to stop and remove the docker container)
+
 <p><a href="#top">Back to Top</a></p>
-
-
-
-
-
-
-
-
- 
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
