@@ -1,0 +1,16 @@
+version: '3'
+services:
+  web:
+    build: .
+    container_name: web_container
+    ports:
+      - "8000:8000"
+    command: > 
+      bash -c "
+      ls && 
+      python3 manage.py makemigrations books &&
+      python3 manage.py makemigrations accounts &&
+      python3 manage.py migrate && 
+      python3 manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./:/app
