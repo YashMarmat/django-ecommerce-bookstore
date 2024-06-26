@@ -1,1 +1,10 @@
-*__pycache__
+.DS_Store
+__pycache__/
+
+*.sqlite3
+*.sqlite
+*.db
+
+.env
+.venv/
+venv/
