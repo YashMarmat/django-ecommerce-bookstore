@@ -1,0 +1,404 @@
+[
+  {
+    "model": "books.book",
+    "pk": 1,
+    "fields": {
+      "title": "Django for Beginners: Build websites with Python and Django",
+      "author": "WS Vincent",
+      "description": "A step-by-step guide to building web applications with Python and Django 3.0. Create, test, and deploy 5 progressively more complex websites including a Message Board app, a Blog app with user accounts, and a robust Newspaper app with reader comments and a complete user registration flow.  Along the way you'll learn core Django features and best practices around models, views, templates, urls, custom user models, permissions, authorizations, user registration, testing, and deployment.",
+      "price": 30.99,
+      "image_url": "https://d2sofvawe08yqg.cloudfront.net/djangoforbeginners/medium2x?1587411572",
+      "follow_author": "https://twitter.com/wsv3000?lang=en",
+      "book_available": true
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 2,
+    "fields": {
+      "title": "Django for APIs: Build web APIs with Python and Django",
+      "author": "WS Vincent",
+      "description": "Take a modern API-first approach to creating 3 different Django back-ends: a Library API, Todo API, and a Blog API with user authentication, permissions, proper documentation, and more. You'll even learn how to connect them to a React front-end for a truly full-stack web application.",
+      "price": 30.5,
+      "image_url": "https://images-na.ssl-images-amazon.com/images/I/41-bFTJlrSL._SX384_BO1,204,203,200_.jpg",
+      "follow_author": "https://twitter.com/wsv3000?lang=en",
+      "book_available": false
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 3,
+    "fields": {
+      "title": "Django for Professionals: Production websites with Python & Django",
+      "author": "WS Vincent",
+      "description": "This book covers in-depth how professional Django programmers do their job and build real-world web applications. Topics covered include Docker, environment variables, payments, search, permissions, file/image uploads, testing, security, performance, and deployment.",
+      "price": 40.0,
+      "image_url": "https://images-na.ssl-images-amazon.com/images/I/61yEnH2STSL.jpg",
+      "follow_author": "https://twitter.com/wsv3000?lang=en",
+      "book_available": true
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 4,
+    "fields": {
+      "title": "Python Crash Course, 2nd Edition: A Hands-On, Project-Based Introduction to Programming",
+      "author": "Eric Matthes",
+      "description": "Python Crash Course is the world's best-selling guide to the Python programming language. This fast-paced, thorough introduction to programming with Python will have you writing programs, solving problems, and making things that work in no time.  In the first half of the book, you'll learn basic programming concepts, such as variables, lists, classes, and loops, and practice writing clean code with exercises for each topic. You'll also learn how to make your programs interactive.",
+      "price": 15.99,
+      "image_url": "https://images-na.ssl-images-amazon.com/images/I/81f8XACISAL.jpg",
+      "follow_author": "https://twitter.com/ehmatthes?lang=en",
+      "book_available": false
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 5,
+    "fields": {
+      "title": "Automate the Boring Stuff with Python, 2nd Edition: Practical Programming for Total Beginners",
+      "author": "Al Sweigart",
+      "description": "In this fully revised second edition of the best-selling classic Automate the Boring Stuff with Python, you'll learn how to use Python to write programs that do in minutes what would take you hours to do by hand--no prior programming experience required. You'll learn the basics of Python and explore Python's rich library of modules for performing specific tasks, like scraping data off websites, reading PDF and Word documents, and automating clicking and typing tasks.",
+      "price": 15.0,
+      "image_url": "https://automatetheboringstuff.com/images/automate_2e_cover.png",
+      "follow_author": "https://twitter.com/alsweigart?lang=en",
+      "book_available": true
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 6,
+    "fields": {
+      "title": "Two Scoops of Django 1.11: Best Practices for the Django Web",
+      "author": "Daniel Roy Greenfeld",
+      "description": "In this book we introduce you to the various tips, tricks, patterns, code snippets, and techniques that we've picked up over the years. We have put thousands of hours into the fourth edition of the book, writing and revising its material to include significant improvements and new material based on feedback from previous editions.",
+      "price": 12.99,
+      "image_url": "https://images-na.ssl-images-amazon.com/images/I/51bRZotr5FL.jpg",
+      "follow_author": "",
+      "book_available": true
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 7,
+    "fields": {
+      "title": "Test-Driven Development with Python: Obey the Testing Goat: Using Django, Selenium, and Java Script",
+      "author": "Harry J.W Percival",
+      "description": "By taking you through the development of a real web application from beginning to end, the second edition of this hands-on guide demonstrates the practical advantages of test-driven development (TDD) with Python. You\u2019ll learn how to write and run tests before building each part of your app, and then develop the minimum amount of code required to pass those tests. The result? Clean code that works.",
+      "price": 25.0,
+      "image_url": "https://m.media-amazon.com/images/I/51KewhyBeML.jpg",
+      "follow_author": "",
+      "book_available": true
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 8,
+    "fields": {
+      "title": "Eloquent JavaScript, 3rd Edition: A Modern Introduction to Programming",
+      "author": "Marijn Haverbeke",
+      "description": "As with previous editions, Haverbeke continues to teach through extensive examples and immerses you in code from the start, while exercises and full-chapter projects give you hands-on experience with writing your own programs. You start by learning the basic structure of the JavaScript language as well as control structures, functions, and data structures to help you write basic programs. Then you'll learn about error handling and bug fixing, modularity, etc.",
+      "price": 24.0,
+      "image_url": "https://images-na.ssl-images-amazon.com/images/I/51MSWCvCmcL._SX377_BO1,204,203,200_.jpg",
+      "follow_author": "",
+      "book_available": false
+    }
+  },
+  {
+    "model": "books.order",
+    "pk": 1,
+    "fields": { "product": 3, "created": "2020-05-31T13:29:59.782Z" }
+  },
+  {
+    "model": "books.order",
+    "pk": 2,
+    "fields": { "product": 1, "created": "2020-07-19T15:36:02.741Z" }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+      "name": "Can add log entry",
+      "content_type": 1,
+      "codename": "add_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+      "name": "Can change log entry",
+      "content_type": 1,
+      "codename": "change_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+      "name": "Can delete log entry",
+      "content_type": 1,
+      "codename": "delete_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+      "name": "Can view log entry",
+      "content_type": 1,
+      "codename": "view_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+      "name": "Can add permission",
+      "content_type": 2,
+      "codename": "add_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+      "name": "Can change permission",
+      "content_type": 2,
+      "codename": "change_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+      "name": "Can delete permission",
+      "content_type": 2,
+      "codename": "delete_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+      "name": "Can view permission",
+      "content_type": 2,
+      "codename": "view_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+      "name": "Can add group",
+      "content_type": 3,
+      "codename": "add_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+      "name": "Can change group",
+      "content_type": 3,
+      "codename": "change_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+      "name": "Can delete group",
+      "content_type": 3,
+      "codename": "delete_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+      "name": "Can view group",
+      "content_type": 3,
+      "codename": "view_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+      "name": "Can add user",
+      "content_type": 4,
+      "codename": "add_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+      "name": "Can change user",
+      "content_type": 4,
+      "codename": "change_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+      "name": "Can delete user",
+      "content_type": 4,
+      "codename": "delete_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+      "name": "Can view user",
+      "content_type": 4,
+      "codename": "view_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+      "name": "Can add content type",
+      "content_type": 5,
+      "codename": "add_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+      "name": "Can change content type",
+      "content_type": 5,
+      "codename": "change_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+      "name": "Can delete content type",
+      "content_type": 5,
+      "codename": "delete_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+      "name": "Can view content type",
+      "content_type": 5,
+      "codename": "view_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+      "name": "Can add session",
+      "content_type": 6,
+      "codename": "add_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+      "name": "Can change session",
+      "content_type": 6,
+      "codename": "change_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+      "name": "Can delete session",
+      "content_type": 6,
+      "codename": "delete_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+      "name": "Can view session",
+      "content_type": 6,
+      "codename": "view_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+      "name": "Can add book",
+      "content_type": 7,
+      "codename": "add_book"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+      "name": "Can change book",
+      "content_type": 7,
+      "codename": "change_book"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+      "name": "Can delete book",
+      "content_type": 7,
+      "codename": "delete_book"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+      "name": "Can view book",
+      "content_type": 7,
+      "codename": "view_book"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+      "name": "Can add order",
+      "content_type": 8,
+      "codename": "add_order"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+      "name": "Can change order",
+      "content_type": 8,
+      "codename": "change_order"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+      "name": "Can delete order",
+      "content_type": 8,
+      "codename": "delete_order"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+      "name": "Can view order",
+      "content_type": 8,
+      "codename": "view_order"
+    }
+  }
+]
